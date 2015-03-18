@@ -78,7 +78,7 @@
             usa.attr('fill', 'gray');
         });
 
-        d3.json('newstorelocations.json', function (locations){
+        d3.json('storelocations.json', function (locations){
             console.log('stores', locations);
 
             var marker = svg.selectAll('circle').data(locations);
