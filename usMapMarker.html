@@ -81,34 +81,24 @@
                     .append('path')
                     .attr('d', path)
                     .attr('fill', 'gray');
-//                    .on("mouseover", function(d) {
-//                        d3.select(this)
-//                                .attr("fill", "#eee");
-//                    })
-//                    .on("mouseout", function() {
-//                        d3.select(this)
-//                                .attr("fill", "gray");
-//                    });
 
 
         d3.json('newstorelocations.json', function (locations){
             console.log('stores', locations);
 
-           svg.selectAll('circle').data(locations)
+           svg.selectAll('circle')
+                    .data(locations)
                     .enter()
                     .append('circle')
                     .attr('cx', function(d) {return projection([d.lon, d.lat])[0]})
                     .attr('cy', function(d) {return projection([d.lon, d.lat])[1]})
                     .attr('r', 4)
-                    .on("mouseover", function (d) {
-                                console.log("d", d);
-                        d3.select(this).style("fill", "blue");
-                    })
-                    .on("mouseout", function() {
-                        d3.select(this).attr("fill", "black");
-                    });
+                   .on("mouseover", function(){d3.select(this).style("fill", "red");
+                   })
+                   .on("mouseout", function(){d3.select(this).style("fill", "blue");
+                   });
 
-//            svg.selectAll('text').data(locations);
+//           svg.selectAll('text').data(locations)
 //                    .enter()
 //                    .append('text')
 //                    .attr('x', function(d) {return projection([d.lon, d.lat])[0]})
@@ -117,8 +107,10 @@
 //                    .attr('dy', 3)
 //                    .text(function(d) {return d.name});
 
+
         });
-       });
+        });
+
 
     </script>
 </body>
