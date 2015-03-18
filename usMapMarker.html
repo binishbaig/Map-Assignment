@@ -18,10 +18,20 @@
             fill: none;
             stroke: #545454;
             stroke-linejoin: round;
+            z-index: -100;
         }
 
         #map {
             text-align: center;
+        }
+
+        svg {
+            z-index: -100;
+        }
+
+        circle {
+            fill: blue;
+            opacity:.9;
         }
 
         text{
@@ -74,11 +84,10 @@
             usa.enter()
                     .append('path')
                     .attr('d', path)
-
-            usa.attr('fill', 'gray');
+                    .attr('fill', 'gray');
         });
 
-        d3.json('storelocations.json', function (locations){
+        d3.json('newstorelocations.json', function (locations){
             console.log('stores', locations);
 
             var marker = svg.selectAll('circle').data(locations);
@@ -87,19 +96,17 @@
                     .append('circle')
                     .attr('cx', function(d) {return projection([d.lon, d.lat])[0]})
                     .attr('cy', function(d) {return projection([d.lon, d.lat])[1]})
-                    .attr('r', 4)
-                    .attr('fill', 'red')
-                    .attr('opacity', '.9');
+                    .attr('r', 4);
 
             var stores = svg.selectAll('text').data(locations);
 
-            stores.enter()
-                    .append('text')
-                    .attr('x', function(d) {return projection([d.lon, d.lat])[0]})
-                    .attr('y', function(d) {return projection([d.lon, d.lat])[1]})
-                    .attr('dx', 5)
-                    .attr('dy', 3)
-                    .text(function(d) {return d.name});
+//            stores.enter()
+//                    .append('text')
+//                    .attr('x', function(d) {return projection([d.lon, d.lat])[0]})
+//                    .attr('y', function(d) {return projection([d.lon, d.lat])[1]})
+//                    .attr('dx', 5)
+//                    .attr('dy', 3)
+//                    .text(function(d) {return d.name});
 
         })
 
