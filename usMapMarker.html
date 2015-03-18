@@ -85,7 +85,7 @@
                     .append('path')
                     .attr('d', path)
                     .attr('fill', 'gray');
-        });
+
 
         d3.json('newstorelocations.json', function (locations){
             console.log('stores', locations);
@@ -98,8 +98,7 @@
                     .attr('cy', function(d) {return projection([d.lon, d.lat])[1]})
                     .attr('r', 4);
 
-            var stores = svg.selectAll('text').data(locations);
-
+//            var stores = svg.selectAll('text').data(locations);
 //            stores.enter()
 //                    .append('text')
 //                    .attr('x', function(d) {return projection([d.lon, d.lat])[0]})
@@ -108,7 +107,8 @@
 //                    .attr('dy', 3)
 //                    .text(function(d) {return d.name});
 
-        })
+        });
+       });
 
     </script>
 </body>
