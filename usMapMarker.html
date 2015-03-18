@@ -16,7 +16,7 @@
 
         .boundary {
             fill: none;
-            stroke: #545454;
+            stroke: #dfdfdf;
             stroke-linejoin: round;
             z-index: -100;
         }
@@ -84,13 +84,22 @@
             usa.enter()
                     .append('path')
                     .attr('d', path)
-                    .attr('fill', 'gray');
+                    .attr('fill', 'gray')
+                    .on("mouseover", function(d) {
+                        d3.select(this)
+                                .attr("fill", "#eee");
+                    })
+                    .on("mouseout", function() {
+                        d3.select(this)
+                                .attr("fill", "gray");
+                    });
 
 
         d3.json('newstorelocations.json', function (locations){
             console.log('stores', locations);
 
             var marker = svg.selectAll('circle').data(locations);
+
 
             marker.enter()
                     .append('circle')
