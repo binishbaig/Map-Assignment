@@ -55,7 +55,7 @@
 </head>
 <body>
 <div id="tooltip" >
-    <p><strong>The store name is:</strong></p>
+    <p><strong>Store name and address:</strong></p>
     <p><span id="value"></span></p>
 </div>
 <div id="map"></div>
@@ -111,7 +111,7 @@
                                 .style("left", xPosition + "px")
                                 .style("top", yPosition + "px")
                                 .select("#value")
-                                .text(d.name);
+                                .text(d.name + "\n" + "located at:" + "\n" + d.AddressLine1+"," + "\n" + d.City + "\n" + d.StateCode);
 
                         d3.select("#tooltip").classed("hidden", false);
 
